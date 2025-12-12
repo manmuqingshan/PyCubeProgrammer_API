@@ -14,6 +14,9 @@ Two examples are included:
 - TestHotPlug.py - a console app that gracefully recovers from a hot-plug of either end of an ST-Link (USB end or the SWD end).
 - runme.py - based loosely on C examples included in the CubeProgrammer_API.
 
+## Why would anybody want this?
+Firmware rarely remains isolated in it's own little CPU. It needs to interact with people and processes, at least during testing and development. That's what communication protocols are for, right? Yes, but with SWD (or JTAG), the firmware needs no communication protocols. SWD is used anyway for firmware download. While it's there, plugged in, it's available for things like reading and writing of data. It's like a live-watch debug window to read and write data except it can be orchestrated by Python and leverage Python's GUI capabilities. And how does Python know how to access data? The same way a debugger does - by interrogating the .elf file to determine data structures and their locations. This capability is useful for R&D development, production testing and beyond. All the necessary drivers for various OS's are handled by others and the firmware doesn't need to implement any communications protocols to open a huge window to the outside world for human interaction.
+
 ## Installation
 copy CubeProgrammer_API.cp39-win_amd64.pyd locally. It's assumed that CubeProgrammer has been installed (`C:/Program Files/STMicroelectronics/STM32Cube/STM32CubeProgrammer/api/lib/`) and has all the necessary DLLs required by the CubeProgrammer_API .pyd file. See the top of the examples for code to reference the location of those DLLs.
 
